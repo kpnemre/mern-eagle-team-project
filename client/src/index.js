@@ -1,12 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import CommentBox from './CommentBox';
+
+import AppRouter from './Router/Router';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <CommentBox />
+    <AppRouter/>
+   
   </React.StrictMode>,
   document.getElementById('root')
 );
