@@ -5,6 +5,13 @@ const commentsController = require("../controller/commentsController");
 // base url: /api/comments
 
 /**
+ * @route   GET /api/comments/postcomment
+ * @desc    All comments endpoint
+ * @access  Public
+ */
+router.post("/postcomment", commentsController.postComment);
+
+/**
  * @route   GET /api/comments
  * @desc    All comments endpoint
  * @access  Public

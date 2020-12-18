@@ -15,6 +15,6 @@ router.use("/auth", authRouter);
  * @route /api/comments
  * @desc Route for Profile
  */
-router.use("/comments", comments);
+//router.use("/comments", comments);
 
 module.exports = router;
