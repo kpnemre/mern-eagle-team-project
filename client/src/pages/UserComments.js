@@ -2,13 +2,17 @@
 import React from "react";
 import CommentList from "../components/CommentList";
 import CommentForm from "../components/CommentForm";
+import data from "../data";
+
+
 
 function UserComments() {
+
   return (
     <div className="App">
       <div>
         <h1> User Comments:</h1>
-        <CommentList />
+        <CommentList defaultdata={data} />
         <CommentForm />
         {/* 
 TODO: ADD COMMENTS from comment list
