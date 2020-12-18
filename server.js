@@ -1,13 +1,13 @@
 const express = require("express");
-const app = express();
 require("dotenv").config();
+const app = express();
 const dbConnect = require("./models/dbConnect");
 const router = require("./routers/router");
 dbConnect();
 
 //middleware
 app.use(express.json());
-//app.use("/api", router);
+// app.use("/api", router);
 
 //server
 const port = process.env.PORT || 5000;
