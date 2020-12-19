@@ -1,10 +1,8 @@
 const express = require("express");
-require("dotenv").config;
+require("dotenv").config();
+const app = express();
 const dbConnect = require("./models/dbConnect");
 const router = require("./routers/router");
-
-const app = express();
-
 dbConnect();
 
 //middleware
