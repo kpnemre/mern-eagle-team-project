@@ -1,7 +1,6 @@
-
 import React from 'react'
 
-const CommentForm = () => {
+const Comment = () => {
     return (
         <div>
             
@@ -9,4 +8,4 @@ const CommentForm = () => {
     )
 }
 
-export default CommentForm;
+export default Comment
