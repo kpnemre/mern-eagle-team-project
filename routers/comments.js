@@ -23,6 +23,6 @@ router.get("/", commentsController.getAllComments);
  * @desc    individual comments endpoint
  * @access  Private
  */
-router.get("/:id", commentsController.getPersonalComment);
+//router.get("/:id", commentsController.getPersonalComment);
 
 module.exports = router;
