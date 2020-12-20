@@ -24,6 +24,7 @@
   "homepage": "https://github.com/kpnemre/mern-eagle-team-project#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "concurrently": "^5.3.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-validator": "^6.8.0",
