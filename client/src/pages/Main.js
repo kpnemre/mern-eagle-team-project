@@ -94,6 +94,11 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
+// TODOS:
+// 1.FORMİK ile validation yapısı oluştur.
+// 2.SingIn to UserComments
+
+
 export default function Main() {
   const classes = useStyles();
 

@@ -4,12 +4,9 @@ import CommentList from "../components/CommentList";
 import CommentForm from "../components/CommentForm";
 import DATA from "../data";
 
-// TODO:
-// 1. Sign olunca Usrcomment e gidecek. Navbar olsun. button(Show All comment)
-// 2. Navbar login olduğunu belirtir Profile Avatar.
-// 3. Navbar a Log out  button u ekle.
 
-const UserComments =()=> {
+
+const AllComments =()=> {
 
   return (
     <div className="container">
@@ -29,7 +26,7 @@ TODO: ADD SEND COMMENTS FORM-- Comment Form
   );
 }
 
-export default UserComments;
+export default AllComments;
 
 // Extras :
 // TODO: add to project default facebook main page .

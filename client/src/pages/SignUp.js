@@ -27,6 +27,11 @@ const useStyles = makeStyles((theme) => ({
 
 
 }));
+
+// TODOS:
+// 1.FORMİK ile validation yapısı oluştur
+// 2.Onclick to SignIN
+// login now to SignIn
 const SignUp = () => {
     const classes = useStyles();
     return (
