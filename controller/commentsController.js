@@ -7,6 +7,7 @@ exports.postComment = async (req, res) => {
   const comment = new Comment({
     commentText,
     userEmail: req.decodedUser.email,
+    userName: req.decodedUser.firstName,
   });
   await comment.save();
   res.send(comment);
