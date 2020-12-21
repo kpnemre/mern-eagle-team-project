@@ -5,6 +5,9 @@ const CommentsSchema = new mongoose.Schema({
   userEmail: {
     type: String,
   },
+  userName: {
+    type: String,
+  },
   commentText: {
     type: String,
     required: false,
