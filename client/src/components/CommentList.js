@@ -3,15 +3,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Comment from './Comment';
 
-const CommentList = (props) => {
-    const commentNodes = props.data.maps(comment=>(
+const CommentList = ({data}) => {
+    const commentNodes = data.map(comment=>(
         <Comment
         author = {comment.author}
         key = {comment._id}
         id = {comment._id}
         timestamp = {comment.updatedAt}
-        handleUpdateComment = {props.handleUpdateComment}
-        handleDeleteComment = {props.handleDeleteComment}  
+        // handleUpdateComment = {props.handleUpdateComment}
+        // handleDeleteComment = {props.handleDeleteComment}  
         >
             {comment.text}
         </Comment>

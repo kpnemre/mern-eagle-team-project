@@ -2,23 +2,25 @@
 import React from "react";
 import CommentList from "../components/CommentList";
 import CommentForm from "../components/CommentForm";
-import data from "../data";
+import DATA from "../data";
 
 
 
-function UserComments() {
+const UserComments =()=> {
 
   return (
-    <div className="App">
-      <div>
-        <h1> User Comments:</h1>
-        <CommentList defaultdata={data} />
+    <div className="container">
+    <div className="comments">
+        <h3> User Comments:</h3>
+        <CommentList data={DATA} />
+        <div className="form">
         <CommentForm />
         {/* 
 TODO: ADD COMMENTS from comment list
 
 TODO: ADD SEND COMMENTS FORM-- Comment Form
 */}
+  </div>
       </div>
     </div>
   );
