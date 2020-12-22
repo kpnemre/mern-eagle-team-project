@@ -1,17 +1,12 @@
 import React from "react";
-import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
-import CssBaseline from "@material-ui/core/CssBaseline";
+
 import TextField from "@material-ui/core/TextField";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
 import Link from "@material-ui/core/Link";
-import Paper from "@material-ui/core/Paper";
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
-import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
-import { makeStyles } from "@material-ui/core/styles";
+import useStyles from "./styles-pages";
 
 function Copyright() {
   return (
@@ -43,56 +38,7 @@ Sign UpLog InMessengerFacebook LiteWatchPeoplePagesPage categoriesPlacesGamesLoc
   );
 }
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    height: "100vh",
-  },
-  image: {
-    // backgroundImage: 'url(https://source.unsplash.com/random)',
-    display: "flex",
-    backgroundColor: "#f0f2f5",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  SignIn: {
-    backgroundColor: "#f0f2f5",
-  },
-  paper: {
-    backgroundColor: "#fff",
-    margin: theme.spacing(15, 4),
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    borderRadius: "1rem",
-    padding: "1rem",
-  },
 
-  form: {
-    width: "100%", // Fix IE 11 issue.
-    marginTop: theme.spacing(1),
-  },
-  submit: {
-    width: "70%",
-    margin: theme.spacing(3, 0, 2),
-    backgroundColor: "#166fe5",
-  },
-  submitNew: {
-    width: "50%",
-    margin: theme.spacing(3, 0, 2),
-    backgroundColor: "#36a420",
-  },
-  buttongroup:{
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-  },
-  font:{
-   
-    marginLeft:'3rem',
-    fontSize:25,
-    fontWeight:200
-  }
-}));
 
 // TODOS:
 // 1.FORMİK ile validation yapısı oluştur.
@@ -100,12 +46,12 @@ const useStyles = makeStyles((theme) => ({
 
 
 export default function Main() {
-  const classes = useStyles();
+  const styles = useStyles();
 
   return (
-    <Grid container component="main" className={classes.root}>
-      <CssBaseline />
-      <Grid item xs={false} sm={4} md={7} className={classes.image}>
+    <Grid container component="main" className={styles.root}>
+      
+      <Grid item xs={false} sm={4} md={7} className={styles.image}>
         <div>
           <div>
             <img
@@ -113,7 +59,7 @@ export default function Main() {
               alt="Facebook"
             ></img>
           </div>
-          <div className={classes.font}>
+          <div className={styles.font}>
             <p>
               Facebook helps you connect and share with the people in your life.
             </p>
@@ -121,15 +67,15 @@ export default function Main() {
         </div>
       </Grid>
 
-      <Grid item xs={12} sm={8} md={5} className={classes.SignIn}>
-        <div className={classes.paper}>
+      <Grid item xs={12} sm={8} md={5} className={styles.SignIn}>
+        <div className={styles.paper}>
           {/* <Avatar className={classes.avatar}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
             Sign in
           </Typography> */}
-          <form className={classes.form} noValidate>
+          <form className={styles.form} noValidate>
             <TextField
               variant="outlined"
               margin="normal"
@@ -156,14 +102,14 @@ export default function Main() {
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
             /> */}
-            <div className={classes.buttongroup}>
+            <div className={styles.buttongroup}>
             <Button
               type="submit"
               fullWidth
               variant="contained"
               color="primary"
               component="span"
-              className={classes.submit}
+              className={styles.submit}
             >
               Sign In
             </Button>
@@ -178,7 +124,7 @@ export default function Main() {
                   variant="contained"
                   color="primary"
                   component="span"
-                  className={classes.submitNew}
+                  className={styles.submitNew}
                 >
                   Create New Account
                 </Button>
