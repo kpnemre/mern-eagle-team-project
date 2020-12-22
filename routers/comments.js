@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const auth = require("../middleware/authMiddleware");
 const commentsController = require("../controller/commentsController");
 
 // base url: /api/comments
@@ -9,7 +10,7 @@ const commentsController = require("../controller/commentsController");
  * @desc    All comments endpoint
  * @access  Public
  */
-router.post("/postcomment", commentsController.postComment);
+router.post("/postcomment", auth, commentsController.postComment);
 
 /**
  * @route   GET /api/comments

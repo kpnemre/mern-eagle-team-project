@@ -6,9 +6,11 @@ exports.postComment = async (req, res) => {
   // Save Comments
   const comment = new Comment({
     commentText,
+    userEmail: req.decodedUser.email,
+    userName: req.decodedUser.firstName,
   });
   await comment.save();
-  res.send("comments sended");
+  res.send(comment);
 };
 exports.getAllComments = async (req, res) => {
   const allComments = await Comment.find();
