@@ -7,10 +7,12 @@ import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import useStyles from "./styles-pages";
+import { useFormik } from 'formik';
+import * as yup from "yup"; 
 
 function Copyright() {
   return (
-    <Typography variant="body2" color="white" align="center">
+    <Typography variant="body2" color="inherit" align="center">
       {/* {"Copyright © "}
       <Link color="inherit" href="https://material-ui.com/">
         Your Website
@@ -41,12 +43,34 @@ Sign UpLog InMessengerFacebook LiteWatchPeoplePagesPage categoriesPlacesGamesLoc
 
 
 // TODOS:
-// 1.FORMİK ile validation yapısı oluştur.
 // 2.SingIn to UserComments
+const validationSchema = yup.object({
 
+email: yup
+  .string('Enter your email')
+  .email('Enter a valid email')
+  .required('Email is required'),
+password: yup
+  .string('Enter your password')
+  .min(8, 'Password should be of minimum 8 characters length')
+  .required('Password is required'),
+});
 
-export default function Main() {
+const Main = () => {
+
   const styles = useStyles();
+
+  const formik = useFormik({
+    initialValues: {
+        email: "",
+        password: "",
+    },
+    validationSchema: validationSchema,
+    onSubmit : (values) => {
+        // alert(JSON.stringify(values, null, 2));
+        console.log("form data", values);
+    },
+  });
 
   return (
     <Grid container component="main" className={styles.root}>
@@ -75,28 +99,34 @@ export default function Main() {
           <Typography component="h1" variant="h5">
             Sign in
           </Typography> */}
-          <form className={styles.form} noValidate>
+          <form onSubmit={formik.handleSubmit} className={styles.form} >
             <TextField
               variant="outlined"
               margin="normal"
-              required
               fullWidth
               id="email"
               label="Email Address"
               name="email"
-              autoComplete="email"
+              // onChange={formik.handleChange}
+              // value={formik.values.email}
+              {...formik.getFieldProps("email")}
+              error={formik.touched.email && Boolean(formik.errors.email)}
+              helperText={formik.touched.email && formik.errors.email}
               autoFocus
             />
             <TextField
               variant="outlined"
               margin="normal"
-              required
               fullWidth
               name="password"
               label="Password"
-              type="password"
               id="password"
-              autoComplete="current-password"
+              type="password"
+              {...formik.getFieldProps("password")}
+              // onChange={formik.handleChange}
+              // value={formik.values.password}
+              error={formik.touched.password && Boolean(formik.errors.password)}
+              helperText={formik.touched.password && formik.errors.password}
             />
             {/* <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
@@ -119,7 +149,6 @@ export default function Main() {
                 </Link>
              <br />
             <Button
-                  type="submit"
                   fullWidth
                   variant="contained"
                   color="primary"
@@ -140,4 +169,6 @@ export default function Main() {
       </Box>
     </Grid>
   );
-}
+};
+
+export default  Main;
