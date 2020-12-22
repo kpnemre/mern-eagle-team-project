@@ -6,43 +6,28 @@ import InputAdornment  from '@material-ui/core/InputAdornment';
 import {AccountCircle,LockRounded, Email, Label} from "@material-ui/icons";
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
-import { makeStyles } from "@material-ui/core/styles";
+
 import Link from "@material-ui/core/Link";
+import useStyles from "./styles-pages";
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-      height: "100vh",
-    },
-    image: {
-      // backgroundImage: 'url(https://source.unsplash.com/random)',
-      display: "flex",
-      backgroundColor: "#f0f2f5",
-      justifyContent: "center",
-      alignItems: "center",
-    },
-    SignIn: {
-      backgroundColor: "#f0f2f5",
-      minHeight:"100vh",
-    },
-
-
-}));
 
 // TODOS:
 // 1.FORMİK ile validation yapısı oluştur
 // 2.Onclick to SignIN
 // login now to SignIn
 const SignUp = () => {
-    const classes = useStyles();
+    const styles = useStyles();
     return (
         <div>
-            <Grid container className={classes.SignIn}>
+            <Grid container component="main" className={styles.SignIn2} >
                 <Grid item xs={12} sm={6}>
-                    <img src="https://static.xx.fbcdn.net/rsrc.php/y8/r/dF5SId3UHWd.svg" style={{width:"100%", height: "100%"}} alt="facebook-logo"/>
+                    <img src="https://static.xx.fbcdn.net/rsrc.php/y8/r/dF5SId3UHWd.svg" className={styles.image2} alt="facebook-logo"/>
                 </Grid>
-                <Grid fel container item xs={12} alignItems="center" direction="column" justify="center" sm={6} style={{padding:10}}>
-        <div style={{display:"flex",backgroundColor: "#fff",padding:"1rem", flexDirection:"column", maxWidth:450, minWidth:450}}>
-                    <TextField 
+                <Grid container item xs={12} sm={6} className={styles.rightContainer} >
+        <div className={styles.paper}>
+            <div className={styles.divSurname} >
+                         <TextField 
+                            autoFocus
                             required
                             label="FirstName" 
                             placeholder="First Name"
@@ -51,7 +36,7 @@ const SignUp = () => {
                             InputProps={{startAdornment: (
                                     <InputAdornment position="start"> <AccountCircle/> </InputAdornment>),}} 
                         />
-                        <TextField 
+                        <TextField
                             required
                             label="LastName" 
                             placeholder="Last Name"
@@ -60,7 +45,10 @@ const SignUp = () => {
                             InputProps={{startAdornment: (
                                     <InputAdornment position="start"><AccountCircle /> </InputAdornment>),}}
                         />
+            </div>
+                    
                         <TextField 
+                            fullWidth
                             required
                             label="Email" 
                             type="Email"
@@ -71,6 +59,7 @@ const SignUp = () => {
                                     <InputAdornment position="start"> <Email/> </InputAdornment>),}} 
                         />
                         <TextField 
+                            fullWidth
                             type= "password"
                             label= "Password"
                             placeholder="Password" 
@@ -79,7 +68,7 @@ const SignUp = () => {
                             InputProps={{startAdornment: (
                                     <InputAdornment position="start"><LockRounded /> </InputAdornment>),}}
                         />
-                        <div style={{height:20}}></div>
+
                         <FormControlLabel
                            control={<Checkbox value="allowExtraEmails" color="primary" />}
                            label="I want to receive inspiration, marketing promotions and updates via email."
@@ -87,13 +76,14 @@ const SignUp = () => {
                          <Button 
                             color="primary" 
                             variant="contained"
-                            style={{maxWidth:400, minWidth:400, margin: "1rem"}}>
+                            className={styles.submitNew}>
                             Sign Up
                         </Button>
-                        <div style={{textAlign:"center"}}>
-                        I have an account <br/>
-                        <Link href="#" variant="body2">Login now</Link> 
-                        </div></div>
+                        <div className={styles.div2} >
+                            I have an account <br/>
+                            <Link href="#" variant="body2">Login now</Link> 
+                        </div>
+                    </div>
 
 
                 </Grid>
