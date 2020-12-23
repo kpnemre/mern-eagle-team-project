@@ -8,7 +8,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import { useFormik } from 'formik';
 import * as yup from "yup"; 
-
+import {postData} from "../helper/PostData";
 import Link from "@material-ui/core/Link";
 import useStyles from "./styles-pages";
 

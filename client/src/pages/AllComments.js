@@ -14,11 +14,12 @@ const [allcomments, setAllcomments] = useState([])
     useEffect(() => {
     fetchData("/api/comments")
     .then((data)=>{
-      setAllcomments(data.allComments)
+      console.log(allcomments)
+      setAllcomments(data?.allComments)
     })
     .catch((error)=>console.log(error))
     }, [])
-    console.log(allcomments)
+   
   return (
     <div>
       <Navbar />

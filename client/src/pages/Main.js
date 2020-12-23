@@ -7,74 +7,66 @@ import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import useStyles from "./styles-pages";
-import { useFormik } from 'formik';
-import * as yup from "yup"; 
+import { useFormik } from "formik";
+import * as yup from "yup";
+import { postData } from "../helper/PostData";
 
 function Copyright() {
   return (
-    <Typography variant="body2" color="inherit" align="center">
-      {/* {"Copyright © "}
+    <div>
+      <Typography variant="body2" color="inherit" align="center">
+        {/* {"Copyright © "}
       <Link color="inherit" href="https://material-ui.com/">
         Your Website
       </Link>{" "}
       {new Date().getFullYear()}
       {"."} */}
-      <p>English (UK)
-Türkçe
-Kurdî (Kurmancî)
-العربية
-Zaza
-Deutsch
-Русский
-Français (France)
-فارسی
-Español
-Português (Brasil)
-</p>
-<hr />
-<br />
-<p>
-Sign UpLog InMessengerFacebook LiteWatchPeoplePagesPage categoriesPlacesGamesLocationsMarketplaceFacebook PayGroupsJobsOculusPortalInstagramLocalFundraisersServicesVoting Information CentreAboutCreate adCreate PageDevelopersCareersPrivacyCookiesAdChoicesTermsHelpSettingsActivity log
-</p>
-    </Typography>
+        English (UK) Türkçe Kurdî (Kurmancî) العربية Zaza Deutsch Русский
+        Français (France) فارسی Español Português (Brasil)
+      </Typography>
+
+      <Typography>
+        Sign UpLog InMessengerFacebook LiteWatchPeoplePagesPage
+        categoriesPlacesGamesLocationsMarketplaceFacebook
+        PayGroupsJobsOculusPortalInstagramLocalFundraisersServicesVoting
+        Information CentreAboutCreate adCreate
+        PageDevelopersCareersPrivacyCookiesAdChoicesTermsHelpSettingsActivity
+        log
+      </Typography>
+    </div>
   );
 }
-
-
 
 // TODOS:
 // 2.SingIn to UserComments
 const validationSchema = yup.object({
-
-email: yup
-  .string('Enter your email')
-  .email('Enter a valid email')
-  .required('Email is required'),
-password: yup
-  .string('Enter your password')
-  .min(8, 'Password should be of minimum 8 characters length')
-  .required('Password is required'),
+  email: yup
+    .string("Enter your email")
+    .email("Enter a valid email")
+    .required("Email is required"),
+  password: yup
+    .string("Enter your password")
+    .min(8, "Password should be of minimum 8 characters length")
+    .required("Password is required"),
 });
 
 const Main = () => {
-
   const styles = useStyles();
 
   const formik = useFormik({
     initialValues: {
-        email: "",
-        password: "",
+      email: "",
+      password: "",
     },
-    validationSchema: validationSchema,
-    onSubmit : (values) => {
-        // alert(JSON.stringify(values, null, 2));
-        console.log("form data", values);
+    // validationSchema: validationSchema,
+    onSubmit: (values) => {
+      alert(JSON.stringify(values, null, 2));
+      console.log("form data", values);
     },
   });
 
   return (
     <Grid container component="main" className={styles.root}>
-      
       <Grid item xs={false} sm={4} md={7} className={styles.image}>
         <div>
           <div>
@@ -99,7 +91,7 @@ const Main = () => {
           <Typography component="h1" variant="h5">
             Sign in
           </Typography> */}
-          <form onSubmit={formik.handleSubmit} className={styles.form} >
+          <form onSubmit={formik.handleSubmit} className={styles.form}>
             <TextField
               variant="outlined"
               margin="normal"
@@ -107,8 +99,8 @@ const Main = () => {
               id="email"
               label="Email Address"
               name="email"
-              // onChange={formik.handleChange}
-              // value={formik.values.email}
+              onChange={formik.handleChange}
+              value={formik.values.email}
               {...formik.getFieldProps("email")}
               error={formik.touched.email && Boolean(formik.errors.email)}
               helperText={formik.touched.email && formik.errors.email}
@@ -123,8 +115,8 @@ const Main = () => {
               id="password"
               type="password"
               {...formik.getFieldProps("password")}
-              // onChange={formik.handleChange}
-              // value={formik.values.password}
+              onChange={formik.handleChange}
+              value={formik.values.password}
               error={formik.touched.password && Boolean(formik.errors.password)}
               helperText={formik.touched.password && formik.errors.password}
             />
@@ -133,42 +125,44 @@ const Main = () => {
               label="Remember me"
             /> */}
             <div className={styles.buttongroup}>
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              component="span"
-              className={styles.submit}
-            >
-              Sign In
-            </Button>
-           
-                <Link href="#" variant="body2">
-                  Forgot password?
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="primary"
+                component="span"
+                className={styles.submit}
+              >
+                Sign In
+              </Button>
+
+              <Link href="/register" variant="body2">
+                Forgot password?
+              </Link>
+              <br />
+              <Button
+                fullWidth
+                variant="contained"
+                color="primary"
+                component="span"
+                className={styles.submitNew}
+              >
+                <Link href="/register" >
+                 Create New Account
                 </Link>
-             <br />
-            <Button
-                  fullWidth
-                  variant="contained"
-                  color="primary"
-                  component="span"
-                  className={styles.submitNew}
-                >
-                  Create New Account
-                </Button>
-                </div>
+              </Button>
+            </div>
           </form>
         </div>
         <div>
           <p>Create a Page for a celebrity, band or business</p>
         </div>
       </Grid>
-      <Box  m={5}>
+      <Box m={5}>
         <Copyright />
       </Box>
     </Grid>
   );
 };
 
-export default  Main;
+export default Main;

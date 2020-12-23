@@ -17,7 +17,7 @@ function AppRouter() {
 
       <Switch>
         <Route exact path="/register" component={SignUp} />
-        <Route exact path="/:id/UserComments" component={UserComments} />
+        <Route exact path="/UserComments/:id" component={UserComments} />
         <Route exact path="/Comments" component={AllComments} />
         <Route path="/" component={Main} />
       </Switch>
