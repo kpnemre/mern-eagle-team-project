@@ -8,7 +8,7 @@ const CommentForm = (props) => {
 
     }
     return (
-<from onSubmit = {props.submitComment}>
+<form onSubmit = {props.submitComment}>
 
     <input 
     type="text"
@@ -28,7 +28,7 @@ const CommentForm = (props) => {
     />
     <button type="submit">Submit</button>
     
-</from>
+</form>
     )
 }
 

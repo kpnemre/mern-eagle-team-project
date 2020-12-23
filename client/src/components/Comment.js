@@ -11,6 +11,9 @@ const Comment = (props) => {
     <div className="textContent">
       <div className="singleCommentContent">
         <h3>{props.author}</h3>
+        {/* <p>{props.id}</p>
+        <p>{props.timestamp}</p> */}
+        <p>{props.text}</p>
         <ReactMarkdown source={props.children} />
       </div>
       <div className="singleCommentButtons">

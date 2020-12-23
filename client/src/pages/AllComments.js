@@ -1,18 +1,31 @@
 //CommentBox is main file and we export to index.js
-import React from "react";
+import React, { useEffect, useState} from "react";
 import CommentList from "../components/CommentList";
 import CommentForm from "../components/CommentForm";
-import DATA from "../data";
+// import DATA from "../data";
+import {fetchData} from "../helper/FetchData";
+import Navbar from "../components/Navbar";
 
 
 
 const AllComments =()=> {
+const [allcomments, setAllcomments] = useState([])
 
+    useEffect(() => {
+    fetchData("/api/comments")
+    .then((data)=>{
+      setAllcomments(data.allComments)
+    })
+    .catch((error)=>console.log(error))
+    }, [])
+    console.log(allcomments)
   return (
+    <div>
+      <Navbar />
     <div className="container">
     <div className="comments">
-        <h3> User Comments:</h3>
-        <CommentList data={DATA} />
+        <h3> All User Comments:</h3>
+        <CommentList data={allcomments} />
         <div className="form">
         <CommentForm />
         {/* 
@@ -22,6 +35,7 @@ TODO: ADD SEND COMMENTS FORM-- Comment Form
 */}
   </div>
       </div>
+    </div>
     </div>
   );
 }

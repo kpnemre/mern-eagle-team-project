@@ -4,17 +4,21 @@ import PropTypes from 'prop-types';
 import Comment from './Comment';
 
 const CommentList = (props) => {
-    // console.log(props)
+    // commentText: "test"
+    // commentUserEmail: "yusuf@gmail.com"
+    // registerDate: "2020-12-18T20:52:17.078Z"
+    // __v: 0
+    // _id: "5fdd168185f37ad3a8f06c35"
     const commentNodes = props.data.map(comment=>(
         <Comment
-        author = {comment.author}
+        author = {comment.commentUserEmail}
         key = {comment._id}
         id = {comment._id}
-        timestamp = {comment.updatedAt}
+        timestamp = {comment.registerDate}
         // handleUpdateComment = {props.handleUpdateComment}
         // handleDeleteComment = {props.handleDeleteComment}  
         >
-            {comment.text}
+            {comment.commentText}
         </Comment>
     ));
 
