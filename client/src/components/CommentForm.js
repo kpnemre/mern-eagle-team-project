@@ -2,16 +2,20 @@
 import React from 'react'
 import PropTypes from 'prop-types';
 
-const CommentForm = ({author,text}) => {
+const CommentForm = (props) => {
+    console.log(props)
+    const handleChangeText =()=>{
+
+    }
     return (
-<from >
-{/* onSubmit = {submitComment} */}
+<from onSubmit = {props.submitComment}>
+
     <input 
     type="text"
     name="author"
     placeholder="Enter your name"
-    value={author}
-    // onChange ={handleChangeText}
+    value={props.author}
+    onChange ={handleChangeText}
     />
 
    
@@ -19,8 +23,8 @@ const CommentForm = ({author,text}) => {
         type="text"
         name="author"
         placeholder="Type something..."
-        value={text}
-        // onChange ={handleTextChange}
+        value={props.text}
+        onChange ={props.handleTextChange}
     />
     <button type="submit">Submit</button>
     

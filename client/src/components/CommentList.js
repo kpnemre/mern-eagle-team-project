@@ -3,8 +3,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Comment from './Comment';
 
-const CommentList = ({data}) => {
-    const commentNodes = data.map(comment=>(
+const CommentList = (props) => {
+    // console.log(props)
+    const commentNodes = props.data.map(comment=>(
         <Comment
         author = {comment.author}
         key = {comment._id}
