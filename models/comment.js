@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
+const User = require("../models/user");
 
 const CommentsSchema = new mongoose.Schema({
-  commentAuth: {
+  userEmail: {
     type: String,
-    required: true,
   },
   commentText: {
     type: String,
@@ -15,4 +15,4 @@ const CommentsSchema = new mongoose.Schema({
   },
 });
 
-module.exports = Comments = mongoose.model("comments", CommentsSchema);
+module.exports = Comments = mongoose.model("comment", CommentsSchema);
