@@ -11,18 +11,19 @@ import * as yup from "yup";
 import {postData} from "../helper/PostData";
 import Link from "@material-ui/core/Link";
 import useStyles from "./styles-pages";
-
+import { toast } from "react-toastify";
+import { useHistory } from "react-router-dom";
 
 // TODOS:
 // 2.Onclick to SignIN
     const validationSchema = yup.object({
 
-        firstname: yup
-          .string('Enter your firstname')
-          .required('Firstname is required'),
-        lastname: yup
-          .string('Enter your lastname')
-          .required('Lastname is required'),
+        firstName: yup
+          .string('Enter your firstName')
+          .required('firstName is required'),
+        lastName: yup
+          .string('Enter your lastName')
+          .required('lastName is required'),
         email: yup
           .string('Enter your email')
           .email('Enter a valid email')
@@ -36,18 +37,29 @@ import useStyles from "./styles-pages";
 
 const SignUp = () => {
     const styles = useStyles();
+    const history = useHistory();
 
     const formik = useFormik({
         initialValues: {
-            firstname: "",
-            lastname: "",
+            firstName: "",
+            lastName: "",
             email: "",
             password: "",
         },
         validationSchema: validationSchema,
         onSubmit: (values) => {
             // alert(JSON.stringify(values, null, 2));
-            console.log("submit data", values);
+            // console.log("submit data", values);
+
+            postData("/api/auth/register", values)
+            .then((data, err) => {
+            //console.log("submit data", values);
+              toast("Successfully registered");
+              history.push("/");
+            })
+            .catch((err) => {
+              toast(err?.message || "An error occured");
+            });
         },
       });
 
@@ -65,13 +77,13 @@ const SignUp = () => {
             
             <div className={styles.divSurname} >
                          <TextField 
-                            id="firstname"
-                            label="FirstName"
-                            name="firstname"
-                            value={formik.values.firstname} 
+                            id="firstName"
+                            label="firstName"
+                            name="firstName"
+                            value={formik.values.firstName} 
                             onChange={formik.handleChange}
-                            error={formik.touched.firstname && Boolean(formik.errors.firstname)}
-                            helperText={formik.touched.firstname && formik.errors.firstname}
+                            error={formik.touched.firstName && Boolean(formik.errors.firstName)}
+                            helperText={formik.touched.firstName && formik.errors.firstName}
                             placeholder="First Name"
                             margin= "normal"
                             variant="outlined"
@@ -79,13 +91,13 @@ const SignUp = () => {
                                     <InputAdornment position="start"> <AccountCircle/> </InputAdornment>),}} 
                         />
                         <TextField
-                            id="lastname"
-                            label="LastName"
-                            name="lastname" 
+                            id="lastName"
+                            label="lastName"
+                            name="lastName" 
                             onChange={formik.handleChange}
-                            value={formik.values.lastname}
-                            error={formik.touched.lastname && Boolean(formik.errors.lastname)}
-                            helperText={formik.touched.lastname && formik.errors.lastname}
+                            value={formik.values.lastName}
+                            error={formik.touched.lastName && Boolean(formik.errors.lastName)}
+                            helperText={formik.touched.lastName && formik.errors.lastName}
                             placeholder="Last Name"
                             margin= "normal" 
                             variant="outlined"
