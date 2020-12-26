@@ -48,14 +48,15 @@ const SignUp = () => {
         },
         validationSchema: validationSchema,
         onSubmit: (values) => {
-            // alert(JSON.stringify(values, null, 2));
-            // console.log("submit data", values);
+            alert(JSON.stringify(values, null, 2));
+            console.log("submit data", values);
 
             postData("/api/auth/register", values)
             .then((data, err) => {
             //console.log("submit data", values);
               toast("Successfully registered");
               history.push("/");
+              process.on('unhandledRejection', e => { throw e; });
             })
             .catch((err) => {
               toast(err?.message || "An error occured");
