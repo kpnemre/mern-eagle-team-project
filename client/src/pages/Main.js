@@ -6,6 +6,9 @@ import Link from "@material-ui/core/Link";
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
+import {AccountCircle,LockRounded, Email} from "@material-ui/icons";
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import InputAdornment  from '@material-ui/core/InputAdornment';
 import useStyles from "./styles-pages";
 import { useFormik } from "formik";
 import * as yup from "yup";
@@ -13,7 +16,6 @@ import { postData } from "../helper/PostData";
 import { toast } from "react-toastify";
 import { useHistory } from "react-router-dom";
 import { useContext } from "react";
-
 
 function Copyright() {
   return (
@@ -57,7 +59,7 @@ const validationSchema = yup.object({
 const Main = () => {
   const styles = useStyles();
   const history = useHistory();
-  const  setLoggedIn  = useContext(AuthContext);
+  const setLoggedIn = useContext(AuthContext);
   //const [loginError, setLoginError] = useState(null);
 
   const formik = useFormik({
@@ -65,20 +67,21 @@ const Main = () => {
       email: "",
       password: "",
     },
-     validationSchema: validationSchema,
+    validationSchema: validationSchema,
     onSubmit: (values) => {
+      console.log(values)
       postData("/api/auth/login", values)
-      .then((data) => {
-        console.log("data", data, "values", values)
-        localStorage.setItem("token", data.token);
-        setLoggedIn(true);
-        alert('You are succesfully logged in!');
-        //console.log("data", data, "values", values)
-        history.push("/Comments");
-      })
-      .catch((err) => {
-        toast(err?.message || "An error occured");
-      });
+        .then((data) => {
+          console.log("data", data, "values", values);
+          localStorage.setItem("token", data.token);
+          setLoggedIn(true);
+          alert("You are succesfully logged in!");
+          //console.log("data", data, "values", values)
+          history.push("/Comments");
+        })
+        .catch((err) => {
+          toast(err?.message || "An error occured");
+        });
     },
   });
 
@@ -102,72 +105,82 @@ const Main = () => {
 
       <Grid item xs={12} sm={8} md={5} className={styles.SignIn}>
         <div className={styles.paper}>
-          {/* <Avatar className={classes.avatar}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Sign in
-          </Typography> */}
           <form onSubmit={formik.handleSubmit} className={styles.form}>
-            <TextField
-              variant="outlined"
-              margin="normal"
-              fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              onChange={formik.handleChange}
-              value={formik.values.email}
-              {...formik.getFieldProps("email")}
-              error={formik.touched.email && Boolean(formik.errors.email)}
-              helperText={formik.touched.email && formik.errors.email}
-              autoFocus
-            />
-            <TextField
-              variant="outlined"
-              margin="normal"
-              fullWidth
-              name="password"
-              label="Password"
-              id="password"
-              type="password"
-              {...formik.getFieldProps("password")}
-              onChange={formik.handleChange}
-              value={formik.values.password}
-              error={formik.touched.password && Boolean(formik.errors.password)}
-              helperText={formik.touched.password && formik.errors.password}
-            />
-            {/* <FormControlLabel
+            <div>
+              <TextField
+                fullWidth
+                id="email"
+                label="Email"
+                name="email"
+                onChange={formik.handleChange}
+                value={formik.values.email}
+                error={formik.touched.email && Boolean(formik.errors.email)}
+                helperText={formik.touched.email && formik.errors.email}
+                placeholder="Email Address"
+                margin="normal"
+                variant="outlined"
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      {" "}
+                      <Email />{" "}
+                    </InputAdornment>
+                  ),
+                }}
+              />
+              <TextField
+                fullWidth
+                id="password"
+                type="password"
+                label="Password"
+                name="password"
+                onChange={formik.handleChange}
+                value={formik.values.password}
+                error={
+                  formik.touched.password && Boolean(formik.errors.password)
+                }
+                helperText={formik.touched.password && formik.errors.password}
+                placeholder="Password"
+                margin="normal"
+                variant="outlined"
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <LockRounded />{" "}
+                    </InputAdornment>
+                  ),
+                }}
+              />
+              {/* <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
             /> */}
-            <div className={styles.buttongroup}>
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                color="primary"
-                component="span"
-                className={styles.submit}
-              >
-                Sign In
-              </Button>
+              <div className={styles.buttongroup}>
+                <Button
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  color="primary"
+                  // component="span" 
+                  className={styles.submit}
+                >
+                  Sign In
+                </Button>
 
-              <Link href="/register" variant="body2">
-                Forgot password?
-              </Link>
-              <br />
-              <Button
-                fullWidth
-                variant="contained"
-                color="primary"
-                component="span"
-                className={styles.submitNew}
-              >
-                <Link href="/register" >
-                 Create New Account
+                <Link href="/register" variant="body2">
+                  Forgot password?
                 </Link>
-              </Button>
+                <br />
+                <Button
+                  fullWidth
+                  variant="contained"
+                  color="primary"
+                  component="span"
+                  className={styles.submitNew}
+                >
+                  <Link href="/register">Create New Account</Link>
+                </Button>
+              </div>
             </div>
           </form>
         </div>
