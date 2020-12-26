@@ -23,7 +23,7 @@ const Comment = (props) => {
   )
 };
 Comment.propTypes = {
-    author: PropTypes.string.isRequired,
+    // author: PropTypes.string.isRequired,
     children: PropTypes.string.isRequired,
   };
 export default Comment;

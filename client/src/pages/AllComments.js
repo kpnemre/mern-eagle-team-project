@@ -8,9 +8,9 @@ import Navbar from "../components/Navbar";
 
 
 
-const AllComments =()=> {
+const AllComments =(props)=> {
 const [allcomments, setAllcomments] = useState([])
-
+const [text, setText] = useState("");
     useEffect(() => {
     fetchData("/api/comments")
     .then((data)=>{
@@ -19,7 +19,13 @@ const [allcomments, setAllcomments] = useState([])
     })
     .catch((error)=>console.log(error))
     }, [])
-   
+
+   const onChangeText = (e) => {
+    setText(e.target.value);
+  }
+  // const submitComment=()=>{
+
+  // }
   return (
     <div>
       <Navbar />
@@ -28,7 +34,10 @@ const [allcomments, setAllcomments] = useState([])
         <h3> All User Comments:</h3>
         <CommentList data={allcomments} />
         <div className="form">
-        <CommentForm />
+        <CommentForm 
+          handleChangeText={onChangeText}
+          // submitComment={submitComment}
+          />
         {/* 
 TODO: ADD COMMENTS from comment list
 

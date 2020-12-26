@@ -4,9 +4,7 @@ import PropTypes from 'prop-types';
 
 const CommentForm = (props) => {
     console.log(props)
-    const handleChangeText =()=>{
 
-    }
     return (
 <form onSubmit = {props.submitComment}>
 
@@ -15,7 +13,7 @@ const CommentForm = (props) => {
     name="author"
     placeholder="Enter your name"
     value={props.author}
-    onChange ={handleChangeText}
+    onChange ={props.handleChangeText}
     />
 
    
@@ -33,8 +31,8 @@ const CommentForm = (props) => {
 }
 
 CommentForm.propTypes = {
-    submitComment: PropTypes.func.isRequired,
-    handleChangeText: PropTypes.func.isRequired,
+    // submitComment: PropTypes.func.isRequired,
+    // handleChangeText: PropTypes.func.isRequired,
     text: PropTypes.string,
     author: PropTypes.string,
   };

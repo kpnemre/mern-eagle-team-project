@@ -37,8 +37,8 @@ CommentList.propTypes = {
         updatedAt : PropTypes.string,
     })),
 
-    handleDeleteComment: PropTypes.func.isRequired,
-    handleUpdateComment: PropTypes.func.isRequired,
+    // handleDeleteComment: PropTypes.func.isRequired,
+    // handleUpdateComment: PropTypes.func.isRequired,
 };
 
 CommentList.defaultProps = {

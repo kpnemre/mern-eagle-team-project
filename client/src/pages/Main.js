@@ -6,8 +6,7 @@ import Link from "@material-ui/core/Link";
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-import {AccountCircle,LockRounded, Email} from "@material-ui/icons";
-import FormControlLabel from '@material-ui/core/FormControlLabel';
+import {LockRounded, Email} from "@material-ui/icons";
 import InputAdornment  from '@material-ui/core/InputAdornment';
 import useStyles from "./styles-pages";
 import { useFormik } from "formik";
@@ -69,15 +68,14 @@ const Main = () => {
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
-      console.log(values)
+      // console.log(values)
       postData("/api/auth/login", values)
         .then((data) => {
-          console.log("data", data, "values", values);
+          // console.log("You are succesfully logged in!");
+          // console.log("data", data, "values", values);
+          history.push("/Comments");
           localStorage.setItem("token", data.token);
           setLoggedIn(true);
-          alert("You are succesfully logged in!");
-          //console.log("data", data, "values", values)
-          history.push("/Comments");
         })
         .catch((err) => {
           toast(err?.message || "An error occured");
