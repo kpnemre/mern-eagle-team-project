@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
-
+import { AuthContext } from "../context/AuthContext";
 import TextField from "@material-ui/core/TextField";
 import Link from "@material-ui/core/Link";
 import Box from "@material-ui/core/Box";
@@ -10,6 +10,10 @@ import useStyles from "./styles-pages";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import { postData } from "../helper/PostData";
+import { toast } from "react-toastify";
+import { useHistory } from "react-router-dom";
+import { useContext } from "react";
+
 
 function Copyright() {
   return (
@@ -52,16 +56,29 @@ const validationSchema = yup.object({
 
 const Main = () => {
   const styles = useStyles();
+  const history = useHistory();
+  const  setLoggedIn  = useContext(AuthContext);
+  //const [loginError, setLoginError] = useState(null);
 
   const formik = useFormik({
     initialValues: {
       email: "",
       password: "",
     },
-    // validationSchema: validationSchema,
+     validationSchema: validationSchema,
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
-      console.log("form data", values);
+      postData("/api/auth/login", values)
+      .then((data) => {
+        console.log("data", data, "values", values)
+        localStorage.setItem("token", data.token);
+        setLoggedIn(true);
+        alert('You are succesfully logged in!');
+        //console.log("data", data, "values", values)
+        history.push("/Comments");
+      })
+      .catch((err) => {
+        toast(err?.message || "An error occured");
+      });
     },
   });
 
