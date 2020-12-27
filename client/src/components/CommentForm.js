@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types';
 
 const CommentForm = (props) => {
-    console.log(props)
+    // console.log(props)
 
     return (
 <form onSubmit = {props.submitComment}>

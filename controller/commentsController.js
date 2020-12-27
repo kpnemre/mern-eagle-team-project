@@ -1,13 +1,14 @@
 const Comment = require("../models/comment");
 
 exports.postComment = async (req, res) => {
-  const { commentText } = req.body;
-
+  const { text, author } = req.body;
+  // 
   // Save Comments
   const comment = new Comment({
-    commentText,
-    userEmail: req.decodedUser.email,
-    userName: req.decodedUser.firstName,
+    text,
+    author,
+    // userEmail: req.decodedUser.email,
+    // userName: req.decodedUser.firstName,
   });
   await comment.save();
   res.send(comment);

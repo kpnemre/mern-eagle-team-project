@@ -2,13 +2,17 @@ const mongoose = require("mongoose");
 const User = require("../models/user");
 
 const CommentsSchema = new mongoose.Schema({
-  userEmail: {
+  // userEmail: {
+  //   type: String,
+  // },
+  // userName: {
+  //   type: String,
+  // },
+  text: {
     type: String,
+    required: false,
   },
-  userName: {
-    type: String,
-  },
-  commentText: {
+  author: {
     type: String,
     required: false,
   },
