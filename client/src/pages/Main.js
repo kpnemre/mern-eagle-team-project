@@ -1,4 +1,4 @@
-import React from "react";
+import React,{ useContext } from "react";
 import Button from "@material-ui/core/Button";
 import { AuthContext } from "../context/AuthContext";
 import TextField from "@material-ui/core/TextField";
@@ -14,7 +14,6 @@ import * as yup from "yup";
 import { postData } from "../helper/PostData";
 import { toast } from "react-toastify";
 import { useHistory } from "react-router-dom";
-import { useContext } from "react";
 
 function Copyright() {
   return (
@@ -58,7 +57,9 @@ const validationSchema = yup.object({
 const Main = () => {
   const styles = useStyles();
   const history = useHistory();
-  const setLoggedIn = useContext(AuthContext);
+
+  const {setLoggedIn} = useContext(AuthContext);
+
   //const [loginError, setLoginError] = useState(null);
 
   const formik = useFormik({
@@ -73,9 +74,9 @@ const Main = () => {
         .then((data) => {
           // console.log("You are succesfully logged in!");
           // console.log("data", data, "values", values);
-          history.push("/Comments");
           localStorage.setItem("token", data.token);
           setLoggedIn(true);
+          history.push("/Comments");
         })
         .catch((err) => {
           toast(err?.message || "An error occured");

@@ -7,5 +7,6 @@ export const fetchData = async (path) => {
       token,
     },
   });
+  
   return response?.data;
 };

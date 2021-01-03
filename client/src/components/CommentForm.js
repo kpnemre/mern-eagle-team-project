@@ -3,23 +3,23 @@ import React from 'react'
 import PropTypes from 'prop-types';
 
 const CommentForm = (props) => {
-    // console.log(props)
+    // console.log("props",props)
 
     return (
 <form onSubmit = {props.submitComment}>
 
-    <input 
+    {/* <input 
     type="text"
     name="author"
     placeholder="Enter your name"
     value={props.author}
     onChange ={props.handleChangeText}
-    />
+    /> */}
 
    
     <input 
         type="text"
-        name="author"
+        name="text"
         placeholder="Type something..."
         value={props.text}
         onChange ={props.handleTextChange}

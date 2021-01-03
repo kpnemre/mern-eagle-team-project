@@ -1,15 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import AuthContextProvider from "./context/AuthContext";
 
 import AppRouter from './Router/Router';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
-  <React.StrictMode>
+ 
+    <AuthContextProvider>
     <AppRouter/>
-   
-  </React.StrictMode>,
+
+    </AuthContextProvider>,
   document.getElementById('root')
 );
 

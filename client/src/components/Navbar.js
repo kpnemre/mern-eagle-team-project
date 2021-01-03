@@ -174,7 +174,7 @@ export default function Navbar() {
             <MenuIcon />
           </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
-            Material-UI
+            Facebook
           </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>

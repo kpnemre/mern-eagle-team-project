@@ -13,27 +13,27 @@ import { toast } from "react-toastify";
 
 const AllComments =(props)=> {
 const [allcomments, setAllcomments] = useState([])
-const [author, setAuthor] = useState("");
-const [text, setText] = useState("");
-const [data, setData] = useState([]);
+// const [author, setAuthor] = useState("");
+// const [text, setText] = useState("");
+// const [data, setData] = useState([]);
 
-// const [formtext, setFormtext] = useState({
-//   data: [],
-//   error: null,
-//   author: '',
-//   comment: '',
-//   updateId: null,
-// })
+const [postForm, setPostForm] = useState({
+  author: "",
+  text: "",
+  data: "",
+
+});
+
 
 
     useEffect(() => {
     fetchData("/api/comments")
     .then((data)=>{
-      console.log(allcomments)
+      // console.log('Allcomment', allcomments)
       setAllcomments(data?.allComments)
     })
     .catch((error)=>console.log(error))
-    }, [data])
+    }, [postForm])
 
   //  const onChangeAuthor = (e) => {
 
@@ -44,31 +44,50 @@ const [data, setData] = useState([]);
   //   console.log("formtext", formtext)
   // }
    const onChangeAuthor = (e) => {
-    setAuthor(e.target.value);
+    setPostForm({ ...postForm, author: e.target.value })
    }
   const onChangeText = (e) => {
-    setText(e.target.value);
+    setPostForm({ ...postForm, text: e.target.value })
   }
 
-  const submitComment=(e)=>{
-    e.preventDefault();
-    // console.log("e",  e)
-
-    // console.log("text, author" , text, author)
-    
-const data = {text,author }
-setData(data);
-console.log("data",data)
-const formdata= JSON.stringify(data)
-postData("/api/comments/postcomment", formdata)
+    const submitComment=(e)=>{
+      e.preventDefault();
+      // const formdata= JSON.stringify(postForm)
+      // console.log(postData)
+      // console.log(formdata)
+postData("/api/comments/postcomment",postForm)
     .then((data,error)=>{
       toast("Successfully registered");
-  console.log(data)
+  console.log('postdata ',data)
     
     })
     .catch((error)=>console.log(error))
 
-  }
+
+    }
+
+//   const submitComment=(e)=>{
+//     e.preventDefault();
+//     // console.log("e",  e)
+
+//     // console.log("text, author" , text, author)
+    
+// const data = {text,author }
+// setData(data);
+// console.log("data",data)
+// const formdata= JSON.stringify(data)
+// postData("/api/comments/postcomment", formdata)
+//     .then((data,error)=>{
+//       toast("Successfully registered");
+//   console.log(data)
+    
+//     })
+//     .catch((error)=>console.log(error))
+
+//   }
+
+// console.log("postForm",postForm.author)
+
   return (
     <div>
       <Navbar />
@@ -79,9 +98,9 @@ postData("/api/comments/postcomment", formdata)
         <div className="form">
         <CommentForm 
           handleChangeText={onChangeAuthor}
-          author={author}
+          author={postForm.author}
           handleTextChange={onChangeText}
-          text={text}
+          text={postForm.text}
           submitComment={submitComment}
           />
         {/* 

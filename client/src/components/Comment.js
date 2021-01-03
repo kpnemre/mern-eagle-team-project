@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import ReactMarkdown from "react-markdown";
 
 const Comment = (props) => {
+  // console.log("props",props)
   return (
     <div className="singleComment">
     <img alt="user_image" className="userImage" src={`https://picsum.photos/70?random=${props.id}`} />
