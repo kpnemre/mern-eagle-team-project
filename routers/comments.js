@@ -17,7 +17,7 @@ router.post("/postcomment", auth, commentsController.postComment);
  * @desc    All comments endpoint
  * @access  Public
  */
-router.get("/", commentsController.getAllComments);
+router.get("/", auth, commentsController.getAllComments);
 
 /**
  * @route   GET /api/comments/:id

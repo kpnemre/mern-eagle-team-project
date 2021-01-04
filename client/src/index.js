@@ -1,13 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import CommentBox from './CommentBox';
+import AuthContextProvider from "./context/AuthContext";
+
+import AppRouter from './Router/Router';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <CommentBox />
-  </React.StrictMode>,
+ 
+    <AuthContextProvider>
+    <AppRouter/>
+
+    </AuthContextProvider>,
   document.getElementById('root')
 );
 
