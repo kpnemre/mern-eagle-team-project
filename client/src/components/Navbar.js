@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from "react";
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -14,6 +14,9 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
+import { AuthContext } from "../context/AuthContext";
+import { useHistory } from "react-router-dom";
+
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -83,6 +86,8 @@ export default function Navbar() {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+  const { isLoggedIn, setLoggedIn } = useContext(AuthContext);
+  const history = useHistory();
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -99,7 +104,11 @@ export default function Navbar() {
     setAnchorEl(null);
     handleMobileMenuClose();
   };
-
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    setLoggedIn(false);
+    history.push(`/`);
+  };
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
@@ -116,7 +125,8 @@ export default function Navbar() {
       onClose={handleMenuClose}
     >
       <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+
+      <MenuItem onClick={handleLogout}>Log Out</MenuItem>
     </Menu>
   );
 
