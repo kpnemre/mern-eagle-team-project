@@ -49,7 +49,7 @@ const SignUp = () => {
         validationSchema: validationSchema,
         onSubmit: (values) => {
             alert(JSON.stringify(values, null, 2));
-            console.log("submit data", values);
+            // console.log("submit data", values);
 
             postData("/api/auth/register", values)
             .then((data, err) => {

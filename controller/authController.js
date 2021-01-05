@@ -54,6 +54,7 @@ exports.authLogin = async (req, res) => {
     { expiresIn: 3600 },
     (err, token) => {
       checkFunction(res, err, "Unknown Error");
+      console.log("token", token)
       res.status(202).json({ token });
     }
   );

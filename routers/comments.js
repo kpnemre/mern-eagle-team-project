@@ -10,14 +10,14 @@ const commentsController = require("../controller/commentsController");
  * @desc    All comments endpoint
  * @access  Public
  */
-router.post("/postcomment",  commentsController.postComment);
+router.post("/postcomment",auth,  commentsController.postComment);
 // auth eklenecek unutma
 /**
  * @route   GET /api/comments
  * @desc    All comments endpoint
  * @access  Public
  */
-router.get("/", commentsController.getAllComments);
+router.get("/",auth, commentsController.getAllComments);
 
 /**
  * @route   GET /api/comments/:id

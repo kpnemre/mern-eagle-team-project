@@ -69,17 +69,15 @@ const Main = () => {
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
-      // console.log(values)
       postData("/api/auth/login", values)
         .then((data) => {
-          // console.log("You are succesfully logged in!");
-          // console.log("data", data, "values", values);
           localStorage.setItem("token", data.token);
           setLoggedIn(true);
           history.push("/Comments");
         })
         .catch((err) => {
           toast(err?.message || "An error occured");
+          alert("wrong pasword or email")
         });
     },
   });

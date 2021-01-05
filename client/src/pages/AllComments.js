@@ -62,38 +62,17 @@ postData("/api/comments/postcomment",postForm)
     
     })
     .catch((error)=>console.log(error))
-
-
     }
-
-//   const submitComment=(e)=>{
-//     e.preventDefault();
-//     // console.log("e",  e)
-
-//     // console.log("text, author" , text, author)
-    
-// const data = {text,author }
-// setData(data);
-// console.log("data",data)
-// const formdata= JSON.stringify(data)
-// postData("/api/comments/postcomment", formdata)
-//     .then((data,error)=>{
-//       toast("Successfully registered");
-//   console.log(data)
-    
-//     })
-//     .catch((error)=>console.log(error))
-
-//   }
-
-// console.log("postForm",postForm.author)
-
+// console.log("data",allcomments)
   return (
     <div>
       <Navbar />
     <div className="container">
     <div className="comments">
         <h3> All User Comments:</h3>
+       
+        {/* {!allcomments ? <h1>NO DATA TO SHOW</h1>: */}
+        <div>
         <CommentList data={allcomments} />
         <div className="form">
         <CommentForm 
@@ -103,12 +82,11 @@ postData("/api/comments/postcomment",postForm)
           text={postForm.text}
           submitComment={submitComment}
           />
-        {/* 
-TODO: ADD COMMENTS from comment list
+          </div>
+          </div>
 
-TODO: ADD SEND COMMENTS FORM-- Comment Form
-*/}
-  </div>
+        {/* } */}
+        
       </div>
     </div>
     </div>
