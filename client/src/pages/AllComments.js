@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import CommentList from "../components/CommentList";
 import CommentForm from "../components/CommentForm";
-// import DATA from "../data";
+import { deleteData } from "../helper/DeleteData";
 import { fetchData } from "../helper/FetchData";
 import { postData } from "../helper/PostData";
 import Navbar from "../components/Navbar";
@@ -11,9 +11,7 @@ import SimpleModal from "../components/Modal";
 
 const AllComments = (props) => {
   const [allcomments, setAllcomments] = useState([]);
-  // const [author, setAuthor] = useState("");
-  // const [text, setText] = useState("");
-  // const [data, setData] = useState([]);
+  // const [currentId, setCurrentId] = useState(0);
 
   const [postForm, setPostForm] = useState({
     author: "",
@@ -49,10 +47,27 @@ const AllComments = (props) => {
       })
       .catch((error) => console.log(error));
   };
+
+  const deleteComment= async(id) => {
+    try {
+      const i = allcomments.findIndex(c => c._id === id);
+      const data = [
+        ...allcomments.slice(0, i),
+        ...allcomments.slice(i + 1),
+      ];
+      setAllcomments({ data });
+      await deleteData("/api/comments/",id);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+
   console.log("data",allcomments)
+
   return (
     <div>
-      <Navbar />
+      <Navbar data={allcomments.length}/>
       <div className="container">
         <div className="comments">
 
@@ -60,7 +75,12 @@ const AllComments = (props) => {
           <SimpleModal />:
           <div>
             <h3> All User Comments:</h3>
-            <CommentList data={allcomments} />
+            <CommentList 
+            data={allcomments} 
+            deleteComment ={deleteComment}
+            // currentId={currentId}
+            // setCurrentId={setCurrentId}
+            />
             <div className="form">
               <CommentForm
                 handleChangeText={onChangeAuthor}

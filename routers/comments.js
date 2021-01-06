@@ -24,6 +24,7 @@ router.get("/",auth, commentsController.getAllComments);
  * @desc    individual comments endpoint
  * @access  Private
  */
+router.delete("/",auth, commentsController.deleteComments);
 //router.get("/:id", commentsController.getPersonalComment);
 
 module.exports = router;

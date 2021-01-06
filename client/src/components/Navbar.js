@@ -80,7 +80,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Navbar() {
+export default function Navbar(props) {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -199,12 +199,12 @@ export default function Navbar() {
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             <IconButton aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={1} color="secondary">
+              <Badge badgeContent={0} color="secondary">
                 <MailIcon />
               </Badge>
             </IconButton>
             <IconButton aria-label="show 17 new notifications" color="inherit">
-              <Badge badgeContent={11} color="secondary">
+              <Badge badgeContent={props.data} color="secondary">
                 <NotificationsIcon />
               </Badge>
             </IconButton>
