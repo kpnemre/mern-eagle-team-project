@@ -19,22 +19,16 @@ function Copyright() {
   return (
     <div>
       <Typography variant="body2" color="inherit" align="center">
-        {/* {"Copyright © "}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."} */}
         English (UK) Türkçe Kurdî (Kurmancî) العربية Zaza Deutsch Русский
         Français (France) فارسی Español Português (Brasil)
       </Typography>
 
       <Typography>
-        Sign UpLog InMessengerFacebook LiteWatchPeoplePagesPage
-        categoriesPlacesGamesLocationsMarketplaceFacebook
-        PayGroupsJobsOculusPortalInstagramLocalFundraisersServicesVoting
-        Information CentreAboutCreate adCreate
-        PageDevelopersCareersPrivacyCookiesAdChoicesTermsHelpSettingsActivity
+        Sign Up Log In Messenger Facebook LiteWatchPeoplePages Page
+        categories Places Games Locations Market place Facebook
+        PayGroups Jobs Oculus Portal Instagram Local Fundraisers Services Voting
+        Information Centre About Createad Create
+        Page Developers Careers Privacy Cookies Ad Choices Terms Help Settings Activity
         log
       </Typography>
     </div>

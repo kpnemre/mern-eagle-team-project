@@ -7,6 +7,7 @@ import { fetchData } from "../helper/FetchData";
 import { postData } from "../helper/PostData";
 import Navbar from "../components/Navbar";
 import { toast } from "react-toastify";
+import SimpleModal from "../components/Modal";
 
 const AllComments = (props) => {
   const [allcomments, setAllcomments] = useState([]);
@@ -55,7 +56,8 @@ const AllComments = (props) => {
       <div className="container">
         <div className="comments">
 
-          {!allcomments ? <h1>NO DATA TO SHOW</h1>:
+          {allcomments.length < 1 ? 
+          <SimpleModal />:
           <div>
             <h3> All User Comments:</h3>
             <CommentList data={allcomments} />
