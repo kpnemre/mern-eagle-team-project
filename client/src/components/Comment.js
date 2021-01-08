@@ -6,8 +6,9 @@ import ClearIcon from "@material-ui/icons/Clear";
 
 
 const Comment = (props) => {
-  console.log("props", props);
-console.log("id", props.id)
+
+//   console.log("props", props);
+// console.log("id", props.id)
 
   return (
     <div className="singleComment">
@@ -27,13 +28,7 @@ console.log("id", props.id)
       </div>
 
       <div className="textContent">
-      {/* <DeleteButton onClick={() => { props.deleteComment(props.id); }}/> */}
-      <Button
-      // disabled color="primary"
-      color="secondary"
-        startIcon={<ClearIcon />}
-        onClick={() =>  props.deleteComment(props.id)}
-      />
+ 
 
       
       </div>

@@ -8,13 +8,13 @@ const CommentForm = (props) => {
     return (
 <form onSubmit = {props.submitComment}>
 
-    {/* <input 
+    <input 
     type="text"
     name="author"
     placeholder="Enter your name"
     value={props.author}
     onChange ={props.handleChangeText}
-    /> */}
+    />
 
    
     <input 
